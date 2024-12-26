@@ -4,24 +4,30 @@ import React from "react";
 import background from "../Assets/grocery.png";
 const HeroSec = () => {
   return (
-    <div>
+    <div className="container-fluid">
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "90vh",
+          height: { xs: "70vh", md: "90vh" },
           flexDirection: "column",
           marginBottom: "20px",
           backgroundImage: `url(${background})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          padding: { xs: "20px", md: "0" },
         }}
       >
         <Typography
-          variant="h2"
-          sx={{ marginBottom: "20px", fontWeight: "bold" }}
+          variant="h3"
+          sx={{
+            marginBottom: "20px",
+            fontWeight: "bold",
+            fontSize: { xs: "2rem", md: "3rem" },
+            textAlign: "center",
+          }}
         >
           Groceries Delivered in 90 Minutes
         </Typography>

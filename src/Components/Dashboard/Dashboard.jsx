@@ -10,7 +10,6 @@ import logo from "../../Assets/Logo-new.png";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
-import ProductCard from "../ProductCard";
 import HeroSec from "../HeroSec";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import BakeryDiningIcon from "@mui/icons-material/BakeryDining";
@@ -18,13 +17,20 @@ import FaceIcon from "@mui/icons-material/Face";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import WeekendIcon from "@mui/icons-material/Weekend";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
+import SlickSlider from "../SlickSlider";
+import { Link } from "react-router";
+import CartList from "../../CartList/CartList";
+import { useLocation } from "react-router";
+import ProductCard from "../ProductCard";
+import { Accordion, Card, Grid, Typography } from "@mui/material";
+import Accord from "../Accordian/Accord";
 
 export default function Dashboard() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [category, setCategory] = React.useState("");
+  const location = useLocation();
 
-  const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleMobileMenuClose = () => {
@@ -74,6 +80,20 @@ export default function Dashboard() {
         <p>Pages</p>
       </MenuItem>
       <MenuItem>
+        <Link to="signupform">
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "green",
+              color: "white",
+              padding: "1px 3px",
+              fontSize: "0.75rem",
+              marginRight: 1,
+            }}
+          >
+            JOIN
+          </Button>
+        </Link>
         <Button
           variant="contained"
           sx={{
@@ -81,23 +101,14 @@ export default function Dashboard() {
             color: "white",
             padding: "1px 3px",
             fontSize: "0.75rem",
-            marginRight: 1,
           }}
-          href="#"
-        >
-          JOIN
-        </Button>
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "green",
-            color: "white",
-            padding: "1px 3px",
-            fontSize: "0.75rem",
-          }}
-          href="#"
         >
           Become a Seller
+        </Button>
+      </MenuItem>
+      <MenuItem>
+        <Button variant="contained" sx={{ bgcolor: "#009F7F" }}>
+          <CartList />
         </Button>
       </MenuItem>
     </Menu>
@@ -105,9 +116,11 @@ export default function Dashboard() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ background: "transparent" }}>
+      <AppBar position="sticky" sx={{ background: "#fff" }}>
         <Toolbar>
-          <img src={logo} alt="Logo" />
+          <Link to="/">
+            <img src={logo} alt="Logo" />
+          </Link>
           <FormControl sx={{ minWidth: 100, ml: 2 }}>
             <Select
               value={category}
@@ -157,33 +170,35 @@ export default function Dashboard() {
               Contact
             </Toolbar>
             <Toolbar sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
-              Pages ⌄
+              Pages
             </Toolbar>
             <Toolbar>
-              <Button
-                variant="contained"
-                size="large"
-                sx={{
-                  backgroundColor: "#009F7F",
-                  color: "white",
-                }}
-                href="#"
-              >
-                JOIN
-              </Button>
+              <Link to={"/signupform"}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  sx={{
+                    backgroundColor: "#009F7F",
+                    color: "white",
+                  }}
+                >
+                  JOIN
+                </Button>
+              </Link>
             </Toolbar>
             <Toolbar>
-              <Button
-                variant="contained"
-                size="large"
-                sx={{
-                  backgroundColor: "#009F7F",
-                  color: "white",
-                }}
-                href="#"
-              >
-                Become a Seller
-              </Button>
+              <Link to={"/signupform"}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  sx={{
+                    backgroundColor: "#009F7F",
+                    color: "white",
+                  }}
+                >
+                  Become a Seller
+                </Button>
+              </Link>
             </Toolbar>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
@@ -193,7 +208,7 @@ export default function Dashboard() {
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              color="gray"
             >
               <MenuIcon />
             </IconButton>
@@ -201,8 +216,40 @@ export default function Dashboard() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      <HeroSec />
-      <ProductCard />
+      <Box sx={{ padding: { xs: 2, md: 4 } }}>
+        <Box sx={{ flexGrow: 1 }}>
+          {location.pathname === "/" && <HeroSec />}
+          {location.pathname === "/" && <SlickSlider />}
+          {location.pathname === "/" && (
+            <Grid container sx={{ mt: "10px" }}>
+              <Grid item md={3} sx={{ display: { md: "block", xs: "none" } }}>
+                <Accord />
+              </Grid>
+              <Grid item md={9}>
+                <ProductCard selectedCategory={category} />
+              </Grid>
+            </Grid>
+          )}
+        </Box>
+        <Box
+          sx={{
+            position: "fixed",
+            right: "0",
+            top: "60%",
+            display: { xs: "none", md: "block" },
+          }}
+        >
+          <Card sx={{ padding: "10px 20px", background: "#019376" }}>
+            <CartList />
+            <Button
+              variant="contained"
+              sx={{ background: "#fff", color: "#019376" }}
+            >
+              $:00
+            </Button>
+          </Card>
+        </Box>
+      </Box>
     </Box>
   );
 }
