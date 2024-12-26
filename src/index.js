@@ -1,19 +1,14 @@
-import React, { Children } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Dashboard from '../src/Components/Dashboard/Dashboard'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import SignUpForm from './Components/SignUpForm';
+import SignUpForm from './Components/SignUpForm/SignUpForm';
 import store from '../src/Store/Store'
 import { Provider } from 'react-redux';
-import ProductDetails from './Components/ProductDetails';
+import ProductDetails from './Components/ProductDetails/ProductDetails';
 import Layout from './Components/Layout/Layout';
-
-import HeroSec from './Components/HeroSec';
-import SlickSlider from './Components/SlickSlider';
-import ProductCard from './Components/ProductCard';
+import ProductCard from './Components/ProductCard/ProductCard';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([

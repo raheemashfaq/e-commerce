@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
@@ -9,13 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import CloseIcon from "@mui/icons-material/Close";
-import img from "../Assets/zeroPro.jpeg";
+import img from "../../Assets/zeroPro.jpeg";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
   decreaseQuan,
   increaseQuan,
   removeItem,
-} from "../features/counter/counterSlice";
+} from "../../features/counter/counterSlice";
 
 export default function CartList() {
   const count = useSelector((state) => state.counter.value);

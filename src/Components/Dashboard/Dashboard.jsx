@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,19 +10,21 @@ import logo from "../../Assets/Logo-new.png";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
-import HeroSec from "../HeroSec";
+import HeroSec from "../HeroSection/HeroSec";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import BakeryDiningIcon from "@mui/icons-material/BakeryDining";
 import FaceIcon from "@mui/icons-material/Face";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import WeekendIcon from "@mui/icons-material/Weekend";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
-import SlickSlider from "../SlickSlider";
-import { Link } from "react-router";
-import CartList from "../../CartList/CartList";
+import SlickSlider from "../SlickSlider/SlickSlider";
+import { Link, useNavigate } from "react-router";
+import Avatar from "@mui/material/Avatar";
+import CartList from "../CartList/CartList";
 import { useLocation } from "react-router";
-import ProductCard from "../ProductCard";
-import { Accordion, Card, Grid, Typography } from "@mui/material";
+import ProductCard from "../ProductCard/ProductCard";
+import profileImg from "../../Assets/avatar.png";
+import { Card, Grid, Tooltip } from "@mui/material";
 import Accord from "../Accordian/Accord";
 
 export default function Dashboard() {
@@ -30,6 +32,18 @@ export default function Dashboard() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [category, setCategory] = React.useState("");
   const location = useLocation();
+  const [loggedInUser, setLoggedInUser] = React.useState(null);
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    setLoggedInUser(user);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
+    setLoggedInUser(null);
+    navigate("/");
+  };
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -152,7 +166,7 @@ export default function Dashboard() {
                 <WeekendIcon sx={{ marginRight: 1 }} />
                 Furniture
               </MenuItem>
-              <MenuItem value="daily-needs">
+              <MenuItem value="daily needs">
                 <AllInboxIcon sx={{ marginRight: 1 }} />
                 Daily Needs
               </MenuItem>
@@ -173,18 +187,31 @@ export default function Dashboard() {
               Pages
             </Toolbar>
             <Toolbar>
-              <Link to={"/signupform"}>
-                <Button
-                  variant="contained"
-                  size="large"
-                  sx={{
-                    backgroundColor: "#009F7F",
-                    color: "white",
-                  }}
-                >
-                  JOIN
-                </Button>
-              </Link>
+              {loggedInUser ? (
+                <>
+                  <Tooltip title="Logout">
+                    <Avatar
+                      alt="Travis Howard"
+                      src={profileImg}
+                      onClick={handleLogout}
+                      sx={{ cursor: "pointer" }}
+                    />
+                  </Tooltip>
+                </>
+              ) : (
+                <Link to={"/signupform"}>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      backgroundColor: "#009F7F",
+                      color: "white",
+                    }}
+                  >
+                    JOIN
+                  </Button>
+                </Link>
+              )}
             </Toolbar>
             <Toolbar>
               <Link to={"/signupform"}>
@@ -216,13 +243,25 @@ export default function Dashboard() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      <Box sx={{ padding: { xs: 2, md: 4 } }}>
+      <Box sx={{ padding: { xs: 2, md: 0 } }}>
         <Box sx={{ flexGrow: 1 }}>
           {location.pathname === "/" && <HeroSec />}
           {location.pathname === "/" && <SlickSlider />}
           {location.pathname === "/" && (
             <Grid container sx={{ mt: "10px" }}>
-              <Grid item md={3} sx={{ display: { md: "block", xs: "none" } }}>
+              <Grid
+                item
+                md={3}
+                sx={{
+                  display: { md: "block", xs: "none" },
+                  position: "sticky",
+                  top: "0",
+                  left: "0",
+                  width: "20%",
+
+                  height: "80vh",
+                }}
+              >
                 <Accord />
               </Grid>
               <Grid item md={9}>

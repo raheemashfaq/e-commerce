@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -30,7 +30,7 @@ export default function Accord() {
         backgroundColor: "#f5f5f5",
         borderRadius: "8px",
         boxShadow: "0px 4px 8px rgba(0,0,0,0.1)",
-        padding: "10px",
+        padding: "30px",
         marginTop: "25px",
       }}
     >

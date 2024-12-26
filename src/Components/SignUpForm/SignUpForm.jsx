@@ -15,7 +15,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router";
-import logo from "../Assets/Logo-new.png";
+import logo from "../../Assets/Logo-new.png";
 
 const loginSchema = yup.object().shape({
   email: yup
@@ -67,7 +67,8 @@ const SignUpForm = () => {
 
       if (user) {
         alert(`Welcome back, ${user.fullName}!`);
-        navigate("/"); // Redirect to home page after successful login
+        localStorage.setItem("loggedInUser", JSON.stringify(user)); // Save logged-in user
+        navigate("/"); // Redirect to the dashboard
       } else {
         alert("Invalid email or password.");
       }

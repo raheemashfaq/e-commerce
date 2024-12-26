@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { Button } from "bootstrap";
 import React from "react";
-import background from "../Assets/grocery.png";
+import background from "../../Assets/grocery.png";
 const HeroSec = () => {
   return (
     <div className="container-fluid">
