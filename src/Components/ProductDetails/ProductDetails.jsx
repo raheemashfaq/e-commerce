@@ -643,7 +643,6 @@ const ProductDetails = () => {
           }}
           onClick={() => {
             dispatch(addItems(product));
-            dispatch(increaseQuan(product));
           }}
         >
           <ShoppingBasketIcon /> Add to Cart
