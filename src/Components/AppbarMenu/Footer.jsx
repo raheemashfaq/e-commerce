@@ -8,7 +8,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 const Footer = () => {
   return (
     <div className="container">
-      <footer className="row row-cols-5 py-5 my-5 border-top">
+      <footer className="row md-row-cols-5 sm-row-cols-2  py-5 my-5 border-top">
         <div className="col">
           <Link
             to="/"

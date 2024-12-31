@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import { Button } from "bootstrap";
 import React from "react";
 import groceryBackground from "../../Assets/grocery.png";
 import bakeryBackground from "../../Assets/bakery2.png";

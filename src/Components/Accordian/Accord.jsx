@@ -14,6 +14,7 @@ import RiceBowlIcon from "@mui/icons-material/RiceBowl";
 import LunchDiningIcon from "@mui/icons-material/LunchDining";
 import WineBarIcon from "@mui/icons-material/WineBar";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
+
 export default function Accord() {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -46,22 +47,23 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "30%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
-            <AppleIcon /> Fruits & Vegitables
+            <AppleIcon />
+            Fruits & Vegetables
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>Fruits</Typography>
-          <Typography>Vegitables</Typography>
+          <Typography>Vegetables</Typography>
         </AccordionDetails>
       </Accordion>
+
       <Accordion
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
@@ -74,22 +76,23 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "33%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
-            <SetMealIcon /> Meat & Fish
+            <SetMealIcon />
+            Meat & Fish
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>Meat</Typography>
-          <Typography>Fish </Typography>
+          <Typography>Fish</Typography>
         </AccordionDetails>
       </Accordion>
+
       <Accordion
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}
@@ -102,15 +105,15 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "33%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
-            <CoffeeIcon /> Snacks
+            <CoffeeIcon />
+            Snacks
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -130,12 +133,11 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "33%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
             <PetsIcon /> Pet Care
@@ -158,12 +160,11 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "33%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
             <CleanHandsIcon /> Home & Cleaning
@@ -188,12 +189,11 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "33%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
             <LiquorIcon /> Dairy
@@ -218,12 +218,11 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "33%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
             <RiceBowlIcon /> Cooking
@@ -249,12 +248,11 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "33%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
             <LunchDiningIcon /> Breakfast
@@ -278,12 +276,11 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "33%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
             <WineBarIcon /> Beverage
@@ -307,12 +304,11 @@ export default function Accord() {
           <Typography
             component="span"
             sx={{
-              width: "33%",
-              flexShrink: 0,
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
               gap: "10px",
+              flex: 1,
             }}
           >
             <HealthAndSafetyIcon /> Health & Beauty
