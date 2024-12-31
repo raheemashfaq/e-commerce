@@ -18,7 +18,6 @@ import {
 } from "../../features/counter/counterSlice";
 
 export default function CartList() {
-  const count = useSelector((state) => state.counter.value);
   const { cartItems } = useSelector((state) => state.counter);
   console.log(cartItems, "cartItems");
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ export default function CartList() {
         <IconButton>
           <ShoppingCartIcon sx={{ color: "#009F7F" }} />
           <Typography variant="body1" sx={{ color: "#009F7F" }}>
-            {count}
+            {cartItems.length}
           </Typography>
         </IconButton>
         <IconButton onClick={toggleDrawer(false)}>
@@ -53,7 +52,7 @@ export default function CartList() {
           />
         </IconButton>
       </Box>
-      {count === 0 ? (
+      {cartItems.length === 0 ? (
         <Box
           sx={{
             display: "flex",
@@ -152,7 +151,7 @@ export default function CartList() {
   return (
     <div>
       <Button onClick={toggleDrawer(true)}>
-        <Badge badgeContent={count} sx={{ color: "#fff" }}>
+        <Badge badgeContent={cartItems.length} sx={{ color: "#fff" }}>
           <ShoppingCartIcon sx={{ color: "#fff" }} />
         </Badge>
       </Button>

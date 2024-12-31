@@ -51,7 +51,7 @@ const SignUpForm = () => {
     formState: { errors, touchedFields },
     reset,
   } = useForm({
-    resolver: yupResolver(isLoginForm ? loginSchema : signupSchema), // Dynamically switch schema
+    resolver: yupResolver(isLoginForm ? loginSchema : signupSchema),
     mode: "onTouched",
   });
 
@@ -67,8 +67,8 @@ const SignUpForm = () => {
 
       if (user) {
         alert(`Welcome back, ${user.fullName}!`);
-        localStorage.setItem("loggedInUser", JSON.stringify(user)); // Save logged-in user
-        navigate("/"); // Redirect to the dashboard
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
+        navigate("/");
       } else {
         alert("Invalid email or password.");
       }

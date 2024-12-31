@@ -9,6 +9,13 @@ import { Provider } from 'react-redux';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import Layout from './Components/Layout/Layout';
 import ProductCard from './Components/ProductCard/ProductCard';
+import Shops from './Components/AppbarMenu/Shops';
+import Offers from './Components/AppbarMenu/Offers';
+import Contact from './Components/AppbarMenu/Contact';
+import Pages from './Components/AppbarMenu/Pages';
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
@@ -22,6 +29,22 @@ const router = createBrowserRouter([
     {
       path:'/details/:id',
       element:<ProductDetails />
+    },
+    {
+      path:"/shops",
+      element:<Shops />
+    },
+    {
+      path:"/offers",
+      element:<Offers />
+    },
+    {
+      path:"/contact",
+      element:<Contact />
+    },
+    {
+      path:"/pages",
+      element:<Pages />
     }
   ]
   },{

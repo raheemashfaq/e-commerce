@@ -14,11 +14,12 @@ import HeroSec from "../HeroSection/HeroSec";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import BakeryDiningIcon from "@mui/icons-material/BakeryDining";
 import FaceIcon from "@mui/icons-material/Face";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import WeekendIcon from "@mui/icons-material/Weekend";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 import SlickSlider from "../SlickSlider/SlickSlider";
-import { Link, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import Avatar from "@mui/material/Avatar";
 import CartList from "../CartList/CartList";
 import { useLocation } from "react-router";
@@ -26,6 +27,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import profileImg from "../../Assets/avatar.png";
 import { Card, Grid, Tooltip } from "@mui/material";
 import Accord from "../Accordian/Accord";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -38,6 +40,15 @@ export default function Dashboard() {
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
     setLoggedInUser(user);
   }, []);
+  const { cartItems } = useSelector((state) => state.counter);
+  console.log(cartItems, "hight");
+  const totalPrice = () => {
+    if (!cartItems || cartItems.length === 0) return 0;
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
@@ -95,35 +106,43 @@ export default function Dashboard() {
       </MenuItem>
       <MenuItem>
         <Link to="signupform">
-          <Button
-            variant="contained"
-            sx={{
+          <div
+            style={{
               backgroundColor: "green",
               color: "white",
-              padding: "1px 3px",
+              padding: "2px 4px",
+              borderRadius: "4px",
               fontSize: "0.75rem",
               marginRight: 1,
             }}
           >
             JOIN
-          </Button>
+          </div>
         </Link>
-        <Button
-          variant="contained"
-          sx={{
+        <div
+          style={{
             backgroundColor: "green",
             color: "white",
-            padding: "1px 3px",
+            padding: "2px 4px",
+            borderRadius: "4px",
             fontSize: "0.75rem",
+            marginRight: 1,
           }}
         >
           Become a Seller
-        </Button>
+        </div>
       </MenuItem>
       <MenuItem>
-        <Button variant="contained" sx={{ bgcolor: "#009F7F" }}>
+        <div
+          variant="contained"
+          style={{
+            backgroundColor: "#009F7F",
+            padding: "4px 8px",
+            borderRadius: "6px",
+          }}
+        >
           <CartList />
-        </Button>
+        </div>
       </MenuItem>
     </Menu>
   );
@@ -158,6 +177,10 @@ export default function Dashboard() {
                 <FaceIcon sx={{ marginRight: 1 }} />
                 Makeup
               </MenuItem>
+              <MenuItem value="bags">
+                <BusinessCenterIcon sx={{ marginRight: 1 }} />
+                Bags
+              </MenuItem>
               <MenuItem value="clothing">
                 <CheckroomIcon sx={{ marginRight: 1 }} />
                 Clothing
@@ -174,18 +197,62 @@ export default function Dashboard() {
           </FormControl>
           <Box sx={{ flexGrow: 1, color: "black" }} />
           <Box sx={{ display: { xs: "none", md: "flex" }, color: "black" }}>
-            <Toolbar sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
-              Shops
-            </Toolbar>
-            <Toolbar sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
-              Offers
-            </Toolbar>
-            <Toolbar sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
-              Contact
-            </Toolbar>
-            <Toolbar sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
-              Pages
-            </Toolbar>
+            <NavLink
+              to="/shops"
+              style={({ isActive }) => ({
+                textDecoration: "none",
+                color: isActive ? "green" : "inherit",
+              })}
+            >
+              <Toolbar
+                sx={{
+                  "&:hover": { color: "green" },
+                  textDecoration: "none",
+                }}
+              >
+                Shops
+              </Toolbar>
+            </NavLink>
+            <NavLink
+              to="/offers"
+              style={({ isActive }) => ({
+                textDecoration: "none",
+                color: isActive ? "green" : "inherit",
+              })}
+            >
+              <Toolbar
+                sx={{ cursor: "pointer", "&:hover": { color: "green" } }}
+              >
+                Offers
+              </Toolbar>
+            </NavLink>
+            <NavLink
+              to="/contact"
+              style={({ isActive }) => ({
+                textDecoration: "none",
+                color: isActive ? "green" : "inherit",
+              })}
+            >
+              <Toolbar
+                sx={{ cursor: "pointer", "&:hover": { color: "green" } }}
+              >
+                Contact
+              </Toolbar>
+            </NavLink>
+            <NavLink
+              to="/pages"
+              style={({ isActive }) => ({
+                textDecoration: "none",
+                color: isActive ? "green" : "inherit",
+              })}
+            >
+              <Toolbar
+                sx={{ cursor: "pointer", "&:hover": { color: "green" } }}
+              >
+                Pages
+              </Toolbar>
+            </NavLink>
+
             <Toolbar>
               {loggedInUser ? (
                 <>
@@ -245,7 +312,7 @@ export default function Dashboard() {
       {renderMobileMenu}
       <Box sx={{ padding: { xs: 2, md: 0 } }}>
         <Box sx={{ flexGrow: 1 }}>
-          {location.pathname === "/" && <HeroSec />}
+          {location.pathname === "/" && <HeroSec selectedCategory={category} />}
           {location.pathname === "/" && <SlickSlider />}
           {location.pathname === "/" && (
             <Grid container sx={{ mt: "10px" }}>
@@ -284,7 +351,7 @@ export default function Dashboard() {
               variant="contained"
               sx={{ background: "#fff", color: "#019376" }}
             >
-              $:00
+              ${totalPrice().toFixed(2)}
             </Button>
           </Card>
         </Box>
