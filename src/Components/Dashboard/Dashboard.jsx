@@ -41,7 +41,6 @@ export default function Dashboard() {
     setLoggedInUser(user);
   }, []);
   const { cartItems } = useSelector((state) => state.counter);
-  console.log(cartItems, "hight");
   const totalPrice = () => {
     if (!cartItems || cartItems.length === 0) return 0;
     return cartItems.reduce(
@@ -162,9 +161,7 @@ export default function Dashboard() {
               inputProps={{ "aria-label": "Category" }}
               sx={{ background: "white", borderRadius: 1, color: "#009F7F" }}
             >
-              <MenuItem value="" disabled>
-                Select Category
-              </MenuItem>
+              <MenuItem value=""> Select Category</MenuItem>
               <MenuItem value="grocery">
                 <LocalGroceryStoreIcon sx={{ marginRight: 1 }} />
                 Grocery
@@ -207,6 +204,7 @@ export default function Dashboard() {
               <Toolbar
                 sx={{
                   "&:hover": { color: "green" },
+                  transition: "color 0.1s ease",
                   textDecoration: "none",
                 }}
               >
@@ -221,7 +219,11 @@ export default function Dashboard() {
               })}
             >
               <Toolbar
-                sx={{ cursor: "pointer", "&:hover": { color: "green" } }}
+                sx={{
+                  cursor: "pointer",
+                  transition: "color 0.1s ease",
+                  "&:hover": { color: "green" },
+                }}
               >
                 Offers
               </Toolbar>
@@ -234,7 +236,11 @@ export default function Dashboard() {
               })}
             >
               <Toolbar
-                sx={{ cursor: "pointer", "&:hover": { color: "green" } }}
+                sx={{
+                  cursor: "pointer",
+                  transition: "color 0.1s ease",
+                  "&:hover": { color: "green" },
+                }}
               >
                 Contact
               </Toolbar>
@@ -247,7 +253,11 @@ export default function Dashboard() {
               })}
             >
               <Toolbar
-                sx={{ cursor: "pointer", "&:hover": { color: "green" } }}
+                sx={{
+                  cursor: "pointer",
+                  transition: "color 0.1s ease",
+                  "&:hover": { color: "green" },
+                }}
               >
                 Pages
               </Toolbar>
@@ -266,18 +276,19 @@ export default function Dashboard() {
                   </Tooltip>
                 </>
               ) : (
-                <Link to={"/signupform"}>
+                <NavLink to={"/signupform"}>
                   <Button
                     variant="contained"
                     size="large"
                     sx={{
                       backgroundColor: "#009F7F",
+                      transition: "color 0.1s ease",
                       color: "white",
                     }}
                   >
                     JOIN
                   </Button>
-                </Link>
+                </NavLink>
               )}
             </Toolbar>
             <Toolbar>
@@ -287,6 +298,7 @@ export default function Dashboard() {
                   size="large"
                   sx={{
                     backgroundColor: "#009F7F",
+                    transition: "color 0.1s ease",
                     color: "white",
                   }}
                 >

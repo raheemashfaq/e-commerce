@@ -19,7 +19,6 @@ import {
 
 export default function CartList() {
   const { cartItems } = useSelector((state) => state.counter);
-  console.log(cartItems, "cartItems");
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
 
@@ -83,7 +82,6 @@ export default function CartList() {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
-            padding: "10px",
           }}
         >
           <div
@@ -93,11 +91,18 @@ export default function CartList() {
               alignItems: "center",
             }}
           >
-            <div>
-              <img src={num.img} width={"200px"} alt="" />
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+              }}
+            >
+              <img src={num.img} width={"100px"} alt="" />
               <div>
-                <Typography sx={{ color: "#009F7F" }}>
-                  Quan:{" "}
+                <Typography sx={{ color: "#009F7F" }} variant="body1">
+                  Qty:{" "}
                   <span style={{ color: "#000", fontWeight: "bold" }}>
                     {num.quantity}{" "}
                   </span>
@@ -106,13 +111,12 @@ export default function CartList() {
             </div>
 
             <div>
-              <Typography variant="h6" sx={{ color: "#009F7F" }}>
+              <Typography variant="body1" sx={{}}>
                 {num.title}
               </Typography>
-              <Typography variant="h6" sx={{ color: "#009F7F" }}>
-                {num.price}
+              <Typography variant="body1" sx={{}}>
+                Price:{num.price}$
               </Typography>
-              <Typography variant="h6">{num.qunatity}</Typography>
               <ButtonGroup variant="text" aria-label="Basic button group">
                 <Button
                   variant="contained"
