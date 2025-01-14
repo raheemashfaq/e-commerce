@@ -80,15 +80,18 @@ const Offers = () => {
           {productCard.map((item, index) => (
             <Grid item md={3} key={index}>
               <Card sx={{ padding: "5px" }}>
-                <img
-                  src={item.img}
-                  alt="Product"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    display: "block",
-                  }}
-                />
+                <Link to="/">
+                  <img
+                    src={item.img}
+                    alt="Product"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      display: "block",
+                      cursor: "pointer",
+                    }}
+                  />
+                </Link>
                 <Box
                   sx={{
                     display: "flex",

@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
+import "./HeroSec.css";
+
 import groceryBackground from "../../Assets/grocery.png";
 import bakeryBackground from "../../Assets/bakery2.png";
 import clothingBackground from "../../Assets/cloths.webp";
@@ -47,13 +49,19 @@ const HeroSec = ({ selectedCategory }) => {
         "Ready to wear dresses tailored for you online. Hurry up while stock lasts.";
       background = furnitureBackground;
       break;
+    case "daily needs":
+      heading = "Your dialy needs";
+      subHeading =
+        "Ready to wear dresses tailored for you online. Hurry up while stock lasts.";
+      background = furnitureBackground;
+      break;
     default:
       heading = "Welcome to Our Store";
       subHeading = "Find everything you need!";
       background = groceryBackground;
   }
   return (
-    <div className="container-fluid">
+    <div className="container-fluid content">
       <Box
         sx={{
           display: "flex",

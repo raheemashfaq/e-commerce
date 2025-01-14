@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { Box, Typography, Card, Button } from "@mui/material";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { useDispatch } from "react-redux";
-import { addItems, increaseQuan } from "../../features/counter/counterSlice";
+import { addItems } from "../../features/counter/counterSlice";
 import { productCard } from "./detailDummy";
 const ProductDetails = () => {
   const { id } = useParams();
@@ -35,7 +35,8 @@ const ProductDetails = () => {
           Description: {product.description}
         </Typography>
         <Typography variant="h5" sx={{ color: "#009F7F" }}>
-          Price: {product.price}
+          Price:
+          <span style={{ color: "#000" }}>{product.price}$</span>
         </Typography>
         <Button
           variant="contained"

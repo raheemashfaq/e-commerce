@@ -73,7 +73,6 @@ const SignUpForm = () => {
         alert("Invalid email or password.");
       }
     } else {
-      // Signup logic
       const users = JSON.parse(localStorage.getItem("users")) || [];
       const userExists = users.some((user) => user.email === data.email);
 

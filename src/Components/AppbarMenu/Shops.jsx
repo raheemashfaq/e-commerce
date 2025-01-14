@@ -7,6 +7,7 @@ import cloth from "../../Assets/cloShop.webp";
 import furniture from "../../Assets/furShop.webp";
 import { Box, Card, Grid, Typography, Button, Avatar } from "@mui/material";
 import Footer from "./Footer";
+import { Link } from "react-router";
 
 const Shops = () => {
   const productCard = [
@@ -62,11 +63,13 @@ const Shops = () => {
                     mt: "20px",
                   }}
                 >
-                  <Avatar
-                    alt="Remy Sharp"
-                    src={item.img}
-                    sx={{ width: 56, height: 56 }}
-                  />
+                  <Link to="/">
+                    <Avatar
+                      alt="Remy Sharp"
+                      src={item.img}
+                      sx={{ width: 56, height: 56 }}
+                    />
+                  </Link>
                   <Box
                     sx={{
                       display: "felx",

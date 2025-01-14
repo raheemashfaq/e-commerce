@@ -4,17 +4,25 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Badge, ButtonGroup, IconButton, Typography } from "@mui/material";
+import {
+  Badge,
+  ButtonGroup,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import CloseIcon from "@mui/icons-material/Close";
 import img from "../../Assets/zeroPro.jpeg";
 import DeleteIcon from "@mui/icons-material/Delete";
+
 import {
   decreaseQuan,
   increaseQuan,
   removeItem,
+  selectTotalPrice,
 } from "../../features/counter/counterSlice";
 
 export default function CartList() {
@@ -78,6 +86,7 @@ export default function CartList() {
       <Divider />
       {cartItems.map((num) => (
         <Box
+          key={num.id}
           sx={{
             display: "flex",
             justifyContent: "space-around",
@@ -99,7 +108,7 @@ export default function CartList() {
                 flexDirection: "column",
               }}
             >
-              <img src={num.img} width={"100px"} alt="" />
+              <img src={num.img} width={"150px"} alt="" />
               <div>
                 <Typography sx={{ color: "#009F7F" }} variant="body1">
                   Qty:{" "}
@@ -136,19 +145,46 @@ export default function CartList() {
             </div>
           </div>
 
-          <div>
-            <Button
-              variant="contained"
-              sx={{ background: "#009F7F", borderRadius: "10px" }}
-              onClick={() => {
-                dispatch(removeItem(num));
-              }}
-            >
-              <DeleteIcon />
-            </Button>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginRight: "10px",
+            }}
+          >
+            <Typography>${(num.quantity * num.price).toFixed(2)}</Typography>
+            <Tooltip title="delete">
+              <Button
+                size="small"
+                onClick={() => {
+                  dispatch(removeItem(num));
+                }}
+              >
+                <CloseIcon
+                  sx={{ color: "#009F7F", "&:hover": { color: "red" } }}
+                />
+              </Button>
+            </Tooltip>
           </div>
         </Box>
       ))}
+      {cartItems.length === 0 ? (
+        ""
+      ) : (
+        <Button
+          variant="contained"
+          sx={{
+            bgcolor: "#009F7F",
+            position: "relative",
+            left: "11rem",
+            top: "10px",
+            width: "50%",
+          }}
+        >
+          Checkout
+        </Button>
+      )}
     </Box>
   );
 

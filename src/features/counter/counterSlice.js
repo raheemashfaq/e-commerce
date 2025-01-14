@@ -37,19 +37,11 @@ export const counterSlice = createSlice({
       state.cartItems = state.cartItems?.filter((item) => item.id !== action.payload.id);
       state.value -= 1; 
     },
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
-  },
+
+  }
 });
 
 
-export const { increment, decrement, incrementByAmount, addItems, removeItem, increaseQuan, decreaseQuan } = counterSlice.actions;
+export const {  addItems, removeItem, increaseQuan, decreaseQuan } = counterSlice.actions;
 
 export default counterSlice.reducer;

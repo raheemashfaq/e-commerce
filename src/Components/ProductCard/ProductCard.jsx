@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addItems } from "../../features/counter/counterSlice";
 import { Link } from "react-router";
 import { dummyProducts } from "./dummyProData";
+import "./ProductCard.css";
 
 const ProductCard = ({ selectedCategory }) => {
   const [visibleCount, setVisibleCount] = useState(15);
@@ -34,9 +35,11 @@ const ProductCard = ({ selectedCategory }) => {
             <Link to={`/details/${item.id}`} style={{ textDecoration: "none" }}>
               <Card
                 sx={{ padding: "10px", maxWidth: "300px", margin: "0 auto" }}
+                className="cardFade"
               >
                 <img
                   src={item.img}
+                  loading="lazy"
                   style={{ maxWidth: "100%", height: "auto" }}
                   alt={item.title}
                 />

@@ -19,10 +19,15 @@ import CheckroomIcon from "@mui/icons-material/Checkroom";
 import WeekendIcon from "@mui/icons-material/Weekend";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 import SlickSlider from "../SlickSlider/SlickSlider";
-import { Link, NavLink, useNavigate } from "react-router";
+import {
+  Link,
+  matchPath,
+  NavLink,
+  useNavigate,
+  useLocation,
+} from "react-router";
 import Avatar from "@mui/material/Avatar";
 import CartList from "../CartList/CartList";
-import { useLocation } from "react-router";
 import ProductCard from "../ProductCard/ProductCard";
 import profileImg from "../../Assets/avatar.png";
 import { Card, Grid, Tooltip } from "@mui/material";
@@ -48,7 +53,7 @@ export default function Dashboard() {
       0
     );
   };
-
+  const isDetailsPage = matchPath("/details/:id", location.pathname);
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser(null);
@@ -245,23 +250,6 @@ export default function Dashboard() {
                 Contact
               </Toolbar>
             </NavLink>
-            <NavLink
-              to="/pages"
-              style={({ isActive }) => ({
-                textDecoration: "none",
-                color: isActive ? "green" : "inherit",
-              })}
-            >
-              <Toolbar
-                sx={{
-                  cursor: "pointer",
-                  transition: "color 0.1s ease",
-                  "&:hover": { color: "green" },
-                }}
-              >
-                Pages
-              </Toolbar>
-            </NavLink>
 
             <Toolbar>
               {loggedInUser ? (
@@ -357,15 +345,17 @@ export default function Dashboard() {
             display: { xs: "none", md: "block" },
           }}
         >
-          <Card sx={{ padding: "10px 20px", background: "#019376" }}>
-            <CartList />
-            <Button
-              variant="contained"
-              sx={{ background: "#fff", color: "#019376" }}
-            >
-              ${totalPrice().toFixed(2)}
-            </Button>
-          </Card>
+          {(location.pathname === "/" || isDetailsPage) && (
+            <Card sx={{ padding: "10px 20px", background: "#019376" }}>
+              <CartList />
+              <Button
+                variant="contained"
+                sx={{ background: "#fff", color: "#019376" }}
+              >
+                ${totalPrice().toFixed(2)}
+              </Button>
+            </Card>
+          )}
         </Box>
       </Box>
     </Box>
