@@ -24,6 +24,7 @@ import {
   removeItem,
   selectTotalPrice,
 } from "../../features/counter/counterSlice";
+import { Link } from "react-router";
 
 export default function CartList() {
   const { cartItems } = useSelector((state) => state.counter);
@@ -172,18 +173,22 @@ export default function CartList() {
       {cartItems.length === 0 ? (
         ""
       ) : (
-        <Button
-          variant="contained"
-          sx={{
-            bgcolor: "#009F7F",
-            position: "relative",
-            left: "11rem",
-            top: "10px",
-            width: "50%",
-          }}
-        >
-          Checkout
-        </Button>
+        <Link to="/checkout">
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "#009F7F",
+              position: "relative",
+              left: "7.5rem",
+              top: "9px",
+              width: "50%",
+              padding: "15px 0",
+              borderRadius: "25px",
+            }}
+          >
+            Checkout To Proceed
+          </Button>
+        </Link>
       )}
     </Box>
   );

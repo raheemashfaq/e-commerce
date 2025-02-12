@@ -13,6 +13,7 @@ import Shops from './Components/AppbarMenu/Shops';
 import Offers from './Components/AppbarMenu/Offers';
 import Contact from './Components/AppbarMenu/Contact';
 import Pages from './Components/AppbarMenu/Pages';
+import Checkout from './Components/Checkout/Checkout';
 
 
 
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
     {
       path:"/pages",
       element:<Pages />
+    },
+    {
+      path:"/checkout",
+      element:<Checkout />
     }
   ]
   },{
