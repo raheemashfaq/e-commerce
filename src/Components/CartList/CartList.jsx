@@ -36,7 +36,10 @@ export default function CartList() {
   };
 
   const DrawerList = (
-    <Box sx={{ width: { sm: 200, md: 450 } }} role="presentation">
+    <Box
+      sx={{ width: { sm: 200, md: 450 }, height: "auto" }}
+      role="presentation"
+    >
       <Box
         sx={{
           display: "flex",

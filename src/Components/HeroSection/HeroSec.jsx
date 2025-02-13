@@ -99,8 +99,8 @@ const HeroSec = ({ selectedCategory }) => {
           sx={{
             display: "flex",
             alignItems: "center",
-            width: "80%",
-            maxWidth: "600px",
+            width: { sm: "40%", md: "80%" },
+            maxWidth: { sm: "300px", md: "600px" },
             marginBottom: "20px",
           }}
         >
