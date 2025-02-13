@@ -96,18 +96,50 @@ export default function Dashboard() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
-        <p>Shops</p>
-      </MenuItem>
-      <MenuItem sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
-        <p>Offers</p>
-      </MenuItem>
-      <MenuItem sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
-        <p>Contact</p>
-      </MenuItem>
-      <MenuItem sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
-        <p>Pages</p>
-      </MenuItem>
+      <NavLink
+        to="/shops"
+        style={({ isActive }) => ({
+          textDecoration: "none",
+          color: isActive ? "green" : "inherit",
+        })}
+      >
+        <MenuItem sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
+          <p>Shops</p>
+        </MenuItem>
+      </NavLink>
+      <NavLink
+        to="/offers"
+        style={({ isActive }) => ({
+          textDecoration: "none",
+          color: isActive ? "green" : "inherit",
+        })}
+      >
+        <MenuItem sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
+          <p>Offers</p>
+        </MenuItem>
+      </NavLink>
+      <NavLink
+        to="/contact"
+        style={({ isActive }) => ({
+          textDecoration: "none",
+          color: isActive ? "green" : "inherit",
+        })}
+      >
+        <MenuItem sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
+          <p>Contact</p>
+        </MenuItem>
+      </NavLink>
+      <NavLink
+        to="/pages"
+        style={({ isActive }) => ({
+          textDecoration: "none",
+          color: isActive ? "green" : "inherit",
+        })}
+      >
+        <MenuItem sx={{ cursor: "pointer", "&:hover": { color: "green" } }}>
+          <p>Pages</p>
+        </MenuItem>
+      </NavLink>
       <MenuItem>
         <Link to="signupform">
           <div

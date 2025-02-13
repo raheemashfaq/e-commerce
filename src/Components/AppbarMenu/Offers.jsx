@@ -76,7 +76,7 @@ const Offers = () => {
         </div>
       </div>
       <div className="container">
-        <Grid container spacing={3}>
+        <Grid container spacing={3} textAlign="center" alignItems="center">
           {productCard.map((item, index) => (
             <Grid item md={3} key={index}>
               <Card sx={{ padding: "5px" }}>

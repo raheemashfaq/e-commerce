@@ -61,13 +61,13 @@ const HeroSec = ({ selectedCategory }) => {
       background = groceryBackground;
   }
   return (
-    <div className="container-fluid content">
+    <div className=" content">
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: { xs: "70vh", md: "90vh" },
+          height: { xs: "40vh", md: "90vh" },
           flexDirection: "column",
           marginBottom: "20px",
           backgroundImage: `url(${background})`,
@@ -78,17 +78,20 @@ const HeroSec = ({ selectedCategory }) => {
         }}
       >
         <Typography
-          variant="h3"
+          variant="body1"
           sx={{
             marginBottom: "20px",
             fontWeight: "bold",
-            fontSize: { xs: "2rem", md: "3rem" },
+            fontSize: { xs: "1.5rem", md: "3rem" },
             textAlign: "center",
           }}
         >
           {heading}
         </Typography>
-        <Typography variant="h5" sx={{ marginBottom: "20px" }}>
+        <Typography
+          variant="body1"
+          sx={{ marginBottom: "20px", padding: { sm: "14px", md: "18px" } }}
+        >
           {subHeading}
         </Typography>
 
